@@ -1,38 +1,462 @@
-.App {
+.img{
+   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:linear-gradient(rgba(185, 183, 183, 0.5), rgba(185, 183, 183, 0.5)), url('https://media.istockphoto.com/id/2174441577/vector/contact-us-banner-speech-banner-saying-contact-us-contact-us-bubble-sticker-or-speech-bubble.jpg?s=612x612&w=0&k=20&c=cfmbGNmqr5E005CYYo_AQehM8RpL7H3ujw4hk8wLDgw=');
+  background-size: cover;        
+  background-position: center;   
+  background-repeat: no-repeat;
+  overflow: hidden;
+  
+}
+.services{
+   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:linear-gradient(rgba(185, 183, 183, 0.5), rgba(54, 53, 53, 0.5)), url('https://www.shutterstock.com/image-photo/visual-representation-after-sales-service-600nw-2562941701.jpg');
+background-size: cover;        
+  background-position: center;   
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.CATEGORIES li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 0;
+  list-style: none;
+  background-color: gray;
+  color: black;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
   text-align: center;
+
+}
+.cart{
+  background-image:linear-gradient(rgba(185, 183, 183, 0.5), rgba(54, 53, 53, 0.5)), url('https://i.pinimg.com/736x/df/70/fc/df70fc7f957c5811ff783ad0efdd4966.jpg');
+  background-size: cover;
+  background-position: center;
+}
+ 
+ .login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("https://images.unsplash.com/photo-1564951434112-64d74cc2a2d7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhaW4lMjBiYWNrZ3JvdW5kc3xlbnwwfHwwfHx8MA%3D%3D");
+  background-size: cover;        
+  background-position: center;   
+  background-repeat: no-repeat;
+  overflow: hidden;             
+}
+.login-box {
+  width: 500px;
+  padding: 30px;
+
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.5);
+
+  background: rgba(255, 255, 255, 0.1);   
+  backdrop-filter: blur(10px);
+
+  overflow: hidden;    
+}
+/* ============================================
+   GLOBAL
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+
+
+body {
+  background-color: #f1f3f6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ============================================
+   NAVBAR - upgrade existing nav styles
+   ============================================ */
+nav {
+  background: linear-gradient(90deg, #2874f0 0%, #1a5dc8 100%) !important;
+  box-shadow: 0 2px 16px rgba(40, 116, 240, 0.3) !important;
+  padding: 0 30px !important;
+  height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav a, nav span, nav li {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: opacity 0.2s !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav a:hover {
+  opacity: 0.8 !important;
+}
+
+/* Cart button */
+nav button:first-of-type,
+.cart-btn {
+  background: rgba(255,255,255,0.15) !important;
+  color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,0.5) !important;
+  padding: 7px 18px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+nav button:first-of-type:hover {
+  background: rgba(255,255,255,0.28) !important;
+}
+
+/* Logout button */
+nav button:last-of-type,
+.logout-btn {
+  background: #ffffff !important;
+  color: #2874f0 !important;
+  border: none !important;
+  padding: 7px 20px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+nav button:last-of-type:hover {
+  background: #e8f0fe !important;
+  transform: scale(1.04) !important;
+}
+
+/* ============================================
+   BANNER / CAROUSEL - upgrade existing styles
+   ============================================ */
+.carousel,
+.banner-container,
+.slider,
+.home-banner {
+  border-radius: 0 0 16px 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15) !important;
+  position: relative !important;
+}
+
+/* Banner image */
+.carousel img,
+.banner-container img,
+.slider img,
+.home-banner img {
+  width: 100% !important;
+  height: 380px !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.5s ease !important;
+}
+
+.carousel img:hover,
+.banner-container img:hover {
+  transform: scale(1.015) !important;
+}
+
+/* Prev / Next arrow buttons */
+.carousel button,
+.prev-btn, .next-btn,
+.arrow-btn {
+  background: rgba(255,255,255,0.9) !important;
+  border: none !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 10 !important;
+  color: #333 !important;
+}
+
+.carousel button:hover,
+.prev-btn:hover,
+.next-btn:hover {
+  background: #fff !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.22) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Carousel dots */
+.carousel-indicators,
+.dots,
+.slider-dots {
+  position: absolute !important;
+  bottom: 14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.carousel-indicators span,
+.carousel-indicators li,
+.dots span,
+.slider-dots span {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(255,255,255,0.5) !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  transition: all 0.25s !important;
+}
+
+.carousel-indicators .active,
+.dots .active,
+.slider-dots .active {
+  background: #fff !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* ============================================
+   HOME PRODUCT IMAGES ROW
+   ============================================ */
+.home-products,
+.product-list,
+.featured-products {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+  gap: 20px !important;
+  padding: 24px 20px 40px !important;
+}
+
+/* ============================================
+   PRODUCT CARDS (Home page)
+   ============================================ */
+.home-products > div,
+.product-list > div,
+.featured-products > div,
+.product-item {
+  background: #ffffff !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  border: 1px solid #e8e8e8 !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.home-products > div:hover,
+.product-list > div:hover,
+.product-item:hover {
+  transform: translateY(-7px) !important;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.13) !important;
+  border-color: #ccc !important;
+}
+
+/* Card images */
+.home-products > div img,
+.product-list > div img,
+.product-item img {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  transition: transform 0.4s ease !important;
+}
+
+.home-products > div:hover img,
+.product-item:hover img {
+  transform: scale(1.06) !important;
+}
+
+/* Card text */
+.home-products > div h4,
+.home-products > div h3,
+.product-item h4 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #212121 !important;
+  padding: 12px 14px 4px !important;
+}
+
+.home-products > div p,
+.product-item p {
+  font-size: 12px !important;
+  color: #888 !important;
+  padding: 0 14px 10px !important;
+}
+
+/* Price */
+.home-products > div span,
+.product-item .price {
+  color: #2874f0 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  padding: 0 14px 10px !important;
+  display: block !important;
+}
+
+/* Add to cart button inside cards */
+.home-products > div button,
+.product-item button {
+  width: calc(100% - 28px) !important;
+  margin: 4px 14px 14px !important;
+  padding: 9px !important;
+  background: #2874f0 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+
+.home-products > div button:hover,
+.product-item button:hover {
+  background: #1a5dc8 !important;
+  transform: scale(1.03) !important;
+}
+
+/* ============================================
+   SECTION HEADING (e.g. "Featured Products")
+   ============================================ */
+h2, .section-heading {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #212121 !important;
+  padding: 24px 20px 12px !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+h2::after {
+  content: '' !important;
+  flex: 1 !important;
+  height: 2.5px !important;
+  background: linear-gradient(to right, #2874f0 0%, transparent 100%) !important;
+  border-radius: 2px !important;
+  display: block !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+/* ============================================
+   FOOTER COMPLETE - paste at bottom of App.css
+   ============================================ */
+.footer {
+  background: linear-gradient(180deg, #172337 0%, #0d1b2a 100%);
+  border-top: 3px solid #2874f0;
+  margin-top: 50px;
+  padding: 40px 40px 20px;
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+}
+
+/* Top section - 4 columns */
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 9px;
+}
+
+.footer-col ul li {
+  color: rgba(255,255,255,0.55);
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-col ul li:hover {
+  color: #2874f0;
+}
+
+/* Middle section - badges */
+.footer-middle {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.footer-badge {
+  background: rgba(40,116,240,0.15);
+  border: 1px solid rgba(40,116,240,0.35);
+  color: #90b8f8;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Bottom - copyright */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-bottom p {
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+}
+
+.footer-brand {
+  font-size: 18px;
+  font-weight: 800;
+  color: #2874f0;
+  letter-spacing: 2px;
+}
 }
