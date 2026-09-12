@@ -1,5 +1,5 @@
-import React from 'react'
 import { createStore } from "redux";
+import cartReducer from "./cartReducer";
 
 
 const initialState = {
@@ -8,14 +8,10 @@ const initialState = {
 
 
 const reducer = (state = initialState, action) => {
-  if (action.type === "ADD_TO_CART") {
-    return {
-      ...state,
-      cart: [...state.cart, action.payload]
-    };
-  }
-
-  return state;
+  return {
+    ...state,
+    cart: cartReducer(state.cart, action)
+  };
 };
 
 

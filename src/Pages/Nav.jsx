@@ -7,37 +7,41 @@ const Nav = () => {
   const totalItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0); 
     
   return (
-    <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img width={50} height={50} src="https://play-lh.googleusercontent.com/0-sXSA0gnPDKi6EeQQCYPsrDx6DqnHELJJ7wFP8bWCpziL4k5kJf8RnOoupdnOFuDm_n" /> <b>FLIPKART</b>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to="/home">HOME</Link>
-         </li>
-         <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to="/products">PRODUCTS</Link>
-         </li>
-         <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to="/contact">CONTACT</Link>
-         </li>
-         <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to="/services">SERVICES</Link>
-         </li>
-
-      </ul>
-      <Link class="btn btn-outline-success me-3" to="/cart">CART <span>{totalItems}</span></Link>
-      <Link class="btn btn-outline-danger"  aria-current="page" to="/Customer_login">LOGOUT</Link>
+    <nav className="navbar navbar-expand-lg site-nav">
+      <div className="container-fluid page-container">
+        <Link className="navbar-brand d-flex align-items-center" to="/home">
+          <img
+            className="brand-logo"
+            src="https://play-lh.googleusercontent.com/0-sXSA0gnPDKi6EeQQCYPsrDx6DqnHELJJ7wFP8bWCpziL4k5kJf8RnOoupdnOFuDm_n"
+            alt="Flipkart"
+          />
+          <span className="brand-name">Flipkart</span>
+        </Link>
+        <button className="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="siteNavigation">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link className="nav-link" to="/home">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/products">Products</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">Contact</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/services">Services</Link>
+            </li>
+          </ul>
+          <div className="d-flex gap-2">
+            <Link className="btn nav-action cart-action" to="/cart">Cart ({totalItems})</Link>
+            <Link className="btn nav-action logout-action" to="/Customer_login">Logout</Link>
+          </div>
         </div>
-       </div>
-       </nav>
-        </div>
+      </div>
+    </nav>
   )
 }
 export default Nav

@@ -1,90 +1,86 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Services = () => {
+  const services = [
+    {
+      id: 1,
+      title: 'Fast Delivery',
+      label: 'Delivery',
+      description: 'Clear delivery timelines with safe packaging for every order.'
+    },
+    {
+      id: 2,
+      title: 'Secure Payment',
+      label: 'Payment',
+      description: 'Pay with cards, UPI, wallets, net banking, or cash on delivery.'
+    },
+    {
+      id: 3,
+      title: 'Customer Support',
+      label: 'Support',
+      description: 'Help for order tracking, refunds, returns, and account questions.'
+    },
+    {
+      id: 4,
+      title: 'Easy Returns',
+      label: 'Returns',
+      description: 'Simple return support for eligible products within the return window.'
+    },
+    {
+      id: 5,
+      title: 'Quality Checks',
+      label: 'Quality',
+      description: 'Products are listed with clear images, prices, and category details.'
+    },
+    {
+      id: 6,
+      title: 'Better Prices',
+      label: 'Savings',
+      description: 'Straightforward discounts shown directly on the product card.'
+    }
+  ];
+
   return (
+    <div className="services-container">
+      <header className="page-header">
+        <div className="page-container">
+          <h1>Services</h1>
+          <p>Useful shopping support without extra noise.</p>
+        </div>
+      </header>
 
-    <div className='services'>
-
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Our Services</h2>
-
-      <div className="row">
-
-        <div className="col-md-4 mb-4">
-          <div className="card text-center p-3">
-            <div className="card-body">
-              <h4>Fast Delivery &#x1F69A; </h4>
-              <p style={{ textAlign: 'center' }}>
-                We provide quick and safe delivery services so your
-                products reach you on time without any delay.
-              </p>
+      <main className="page-container">
+        <section className="section-block">
+          <div className="section-heading">
+            <div>
+              <h2>Why Shop With Us</h2>
+              <p>Basic services customers expect from a reliable online store.</p>
             </div>
           </div>
-        </div>
-
-        <div className="col-md-4 mb-5">
-          <div className="card text-center p-4">
-            <div className="card-body">
-              <h4>Secure Payment &#128272; </h4>
-              <p style={{ textAlign: 'center' }}>
-                Multiple secure payment options like gpay, 
-                phonepe,paytm,cash on delivery .
-              </p>
-            </div>
+          <div className="services-grid">
+            {services.map((service) => (
+              <article key={service.id} className="service-card">
+                <span className="service-label">{service.label}</span>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </article>
+            ))}
           </div>
-        </div>
+        </section>
 
-        <div className="col-md-4 mb-4">
-          <div className="card text-center p-3">
-            <div className="card-body">
-              <h4>Customer Support &#128100;</h4>
-              <p style={{ textAlign: 'center' }}>
-                Our team is available 24/7 to help and clarify any doubts about orders,
-                returns,and upadate your doubts.
-              </p>
+        <section className="section-block">
+          <div className="section-heading">
+            <div>
+              <h2>Ready to shop?</h2>
+              <p>Open the product catalog and add items to your cart.</p>
             </div>
+            <Link className="primary-link" to="/products">View Products</Link>
           </div>
-        </div>
-
-        <div className="col-md-4 mb-4">
-          <div className="card text-center p-3">
-            <div className="card-body">
-              <h4>Easy Returns &#128338;</h4>
-              <p  style={{ textAlign: 'center' }}>
-                The product damaged or not as expected? return and refund
-                option within a 7-day return period.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4 mb-4">
-          <div className="card text-center p-3">
-            <div className="card-body">
-              <h4>Best Quality &#128076;</h4>
-              <p style={{ textAlign: 'center' }}>
-                You can high rated star products and best quality items.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4 mb-5">
-          <div className="card text-center p-4">
-            <div className="card-body">
-              <h4>Affordable Prices  &#128181; </h4>
-              <p style={{ textAlign: 'center' }}>
-               The products with low price and high quality.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
+        </section>
+      </main>
     </div>
   )
 }
 
 export default Services
-     

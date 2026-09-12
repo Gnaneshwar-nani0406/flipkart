@@ -1,49 +1,118 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Customer_login = () => {
-     const nav = useNavigate()
-        
-    const [login_data, set_data] = useState({
-            Username:'',
-            Password:''
+  const nav = useNavigate()
+  const [login_data, set_data] = useState({
+    Username: '',
+    Password: ''
+  })
+  const [errors, setErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
 
-        })          
-     
-      const Fullname=localStorage.getItem('Fullname')
-      const Mobile=localStorage.getItem('Mobile')
-      const Username=localStorage.getItem('Username')
-      const Password=localStorage.getItem('Password')
+  const Username = localStorage.getItem('Username')
+  const Password = localStorage.getItem('Password')
 
-      const login_submit=(e)=>{
-        e.preventDefault()
-        if (String(login_data.Username)===String(Username) & String(login_data.Password)===String(Password)) {
-            alert('Login Successfull')
-            nav('/home')
-        }
+  const validateForm = () => {
+    const newErrors = {}
+
+    if (!login_data.Username.trim()) {
+      newErrors.Username = 'Username is required'
+    }
+
+    if (!login_data.Password.trim()) {
+      newErrors.Password = 'Password is required'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const login_submit = (e) => {
+    e.preventDefault()
+
+    if (!validateForm()) {
+      return
+    }
+
+    setIsLoading(true)
+
+    setTimeout(() => {
+      if (String(login_data.Username) === String(Username) && String(login_data.Password) === String(Password)) {
+        localStorage.setItem('isLoggedIn', 'true')
+        alert('Login successful')
+        nav('/home')
+      } else {
+        alert('Invalid username or password')
       }
-
+      setIsLoading(false)
+    }, 400)
+  }
 
   return (
-    <div className='login-container'>
-               <div className="login-box">
-                    <center><h4>CUSTOMER LOGIN</h4></center>
-                    <form onSubmit={login_submit}>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">User Name</label>
-                <input type="text" name='Username' onChange={(e)=>set_data({...login_data,[e.target.name]:e.target.value})} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" name='Password' onChange={(e)=>set_data({...login_data,[e.target.name]:e.target.value})} class="form-control" id="exampleInputPassword1" />
-            </div>
-            <div className='text-center'>
-                
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            <p className='text-center'>Go to registration page <a href="/Registration">Click here</a> </p>
-            </form>
-                </div>
+    <div className='flipkart-login-page'>
+      <div className='flipkart-login-box'>
+        <div className='flipkart-login-info'>
+          <div>
+            <h1>Login</h1>
+            <p>Get access to your Orders, Wishlist and Recommendations</p>
+          </div>
+          <img
+            src='https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png'
+            alt='Shopping illustration'
+          />
+        </div>
+
+        <form className='flipkart-login-form' onSubmit={login_submit}>
+          <div className='flipkart-field'>
+            <input
+              type='text'
+              id='username'
+              name='Username'
+              value={login_data.Username}
+              onChange={(e) => {
+                set_data({ ...login_data, [e.target.name]: e.target.value })
+                if (errors.Username) {
+                  setErrors({ ...errors, Username: '' })
+                }
+              }}
+              className={errors.Username ? 'input-error' : ''}
+              placeholder='Enter Email/Mobile number'
+            />
+            {errors.Username && <span className='error-text'>{errors.Username}</span>}
+          </div>
+
+          <div className='flipkart-field'>
+            <input
+              type='password'
+              id='password'
+              name='Password'
+              value={login_data.Password}
+              onChange={(e) => {
+                set_data({ ...login_data, [e.target.name]: e.target.value })
+                if (errors.Password) {
+                  setErrors({ ...errors, Password: '' })
+                }
+              }}
+              className={errors.Password ? 'input-error' : ''}
+              placeholder='Enter Password'
+            />
+            {errors.Password && <span className='error-text'>{errors.Password}</span>}
+          </div>
+
+          <p className='flipkart-terms'>
+            By continuing, you agree to Flipkart's <a href='https://www.flipkart.com/pages/terms' target='_blank' rel='noreferrer'>Terms of Use</a> and <a href='https://www.flipkart.com/pages/privacypolicy' target='_blank' rel='noreferrer'>Privacy Policy</a>.
+          </p>
+
+          <button type='submit' className='flipkart-login-button' disabled={isLoading}>
+            {isLoading ? 'LOGIN...' : 'Login'}
+          </button>
+
+          <Link to='/registration' className='flipkart-create-link'>
+            New to Flipkart? Create an account
+          </Link>
+        </form>
+      </div>
     </div>
   )
 }

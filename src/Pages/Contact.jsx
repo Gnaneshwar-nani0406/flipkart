@@ -1,88 +1,97 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    contact: '',
+    address: '',
+    message: ''
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert('Thank you for contacting us. We will get back to you soon.')
+    setFormData({ firstName: '', lastName: '', email: '', contact: '', address: '', message: '' })
+  }
+
   return (
-        
-     <div className='img'> 
-      <h1 style={{ textAlign: 'center' }}>CONTACT PAGE</h1>
-        <div class="col-md-7 col-lg-8">
-        <form class="needs-validation" novalidate=""/>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required="" fdprocessedid="96wjxo" />
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
+    <div className="contact-container">
+      <header className="page-header">
+        <div className="page-container">
+          <h1>Contact Us</h1>
+          <p>Send your order, return, or account question to our support team.</p>
+        </div>
+      </header>
+
+      <main className="page-container content-grid">
+        <aside className="info-card">
+          <div className="info-list">
+            <div className="info-item">
+              <h4>Address</h4>
+              <p>Flipkart Hyderabad Office<br />HITEC City, Madhapur<br />Hyderabad, Telangana - 500081</p>
             </div>
-
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required="" fdprocessedid="lfc9h" />
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
+            <div className="info-item">
+              <h4>Phone</h4>
+              <p>+91 40 4567 8900<br />+91 40 4567 8910</p>
             </div>
-
-            <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-              <input type="email" class="form-control" id="email" placeholder="email@gmail.com" fdprocessedid="6rk0r" />
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
+            <div className="info-item">
+              <h4>Email</h4>
+              <p>hyderabad.support@flipkart.com<br />help@flipkart.com</p>
             </div>
-
-            <div class="col-12">
-              <label for="contact" class="form-label">Contact</label>
-              <input type="text" class="form-control" id="contact" placeholder="123..." fdprocessedid="6rk0r" />
-              <div class="invalid-feedback">
-                Please enter your correct contact number.
-              </div>
+            <div className="info-item">
+              <h4>Working Hours</h4>
+              <p>Monday to Saturday<br />10:00 AM - 6:00 PM</p>
             </div>
-
-            <div class="col-12">
-              <label for="address2" class="form-label">Address  <span class="text-muted"></span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" fdprocessedid="nt14vl" />
-            </div>
-
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required="" fdprocessedid="z2vwbs">
-                <option value="">Choose...</option>
-                <option value="india">India</option>
-              </select>
-
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" required="" fdprocessedid="1x8crf">
-                <option value="">Choose...</option>
-                 <option value="india">India</option>
-              </select>
-
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-
           </div>
+        </aside>
 
-          <hr class="my-4"/>
-
-<div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info" />
-            <label class="form-check-label" for="save-info">Save this information for next time</label>
+        <section className="form-card">
+          <div className="section-heading">
+            <h2>Send a Message</h2>
           </div>
-
-          <hr class="my-6"/>
-    
-     </div>
-  </div>
-    
+          <form onSubmit={handleSubmit}>
+            <div className="row g-3">
+              <div className="col-md-6">
+                <label className="form-label">First Name</label>
+                <input type="text" className="form-control" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Enter first name" required />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Last Name</label>
+                <input type="text" className="form-control" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Enter last name" required />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Email</label>
+                <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} placeholder="email@example.com" required />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Contact Number</label>
+                <input type="tel" className="form-control" name="contact" value={formData.contact} onChange={handleChange} placeholder="10-digit mobile number" maxLength="10" required />
+              </div>
+              <div className="col-12">
+                <label className="form-label">Address</label>
+                <input type="text" className="form-control" name="address" value={formData.address} onChange={handleChange} placeholder="Complete address" required />
+              </div>
+              <div className="col-12">
+                <label className="form-label">Message</label>
+                <textarea className="form-control" name="message" value={formData.message} onChange={handleChange} rows="5" placeholder="Write your message" required></textarea>
+              </div>
+              <div className="col-12">
+                <button type="submit" className="primary-button w-100">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
   )
 }
 
